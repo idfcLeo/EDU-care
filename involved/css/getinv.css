@@ -1,0 +1,184 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  header {
+    background-color: #0056b3;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav ul li {
+    margin: 0 1rem;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  nav ul li a.active {
+    text-decoration: underline;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+  }
+  
+  .hero-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  /* Get Involved Section */
+  .get-involved-options {
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 2rem;
+    background-color: #fff;
+  }
+  
+  .involved-option {
+    background-color: #f2f2f2;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+  }
+  
+  .involved-option h3 {
+    font-size: 1.8rem;
+    color: #0056b3;
+  }
+  
+  .involved-option p {
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .involved-option .btn-primary {
+    padding: 0.8rem 1.5rem;
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .involved-option .btn-primary:hover {
+    background-color: #003d8a;
+  }
+  
+  /* Success Stories Section */
+  .success-stories {
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: #eaf6ff;
+  }
+  
+  .success-stories h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .story-card {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .story-card h4 {
+    font-size: 1.3rem;
+    color: #0056b3;
+  }
+  
+  .story-card p {
+    margin: 1rem 0;
+  }
+  
+  .story-card .btn-secondary {
+    padding: 0.6rem 1.2rem;
+    background-color: #0056b3;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .story-card .btn-secondary:hover {
+    background-color: #003d8a;
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .get-involved-options {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .involved-option {
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+  
+    .story-cards {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .story-card {
+      width: 80%;
+    }
+  }
+  

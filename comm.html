@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Blog Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        .blog-post {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post h2 {
+            color: #333;
+        }
+        .blog-post p {
+            line-height: 1.6;
+            color: #666;
+        }
+        .blog-post .author {
+            font-style: italic;
+            color: #999;
+        }
+        .create-post {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .create-post textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .create-post button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .create-post button:hover {
+            background: #555;
+        }
+        .reaction-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .reaction-buttons button {
+            background: #eee;
+            border: 1px solid #ccc;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reaction-buttons button:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Community Blog</h1>
+    </header>
+    <div class="container">
+        <!-- Create Post Section -->
+        <div class="create-post">
+            <h2>Create a New Post</h2>
+            <textarea id="postContent" rows="5" placeholder="What's on your mind?"></textarea>
+            <button onclick="addPost()">Post</button>
+        </div>
+
+        <!-- Blog Posts Section -->
+        <div id="blogPosts">
+            <div class="blog-post">
+                <h2>Welcome to the Community Blog!</h2>
+                <p>This is a space where you can share your thoughts, stories, and ideas with the community. Start by creating a post above!</p>
+                <p class="author">- Admin</p>
+                <div class="reaction-buttons">
+                    <button onclick="alert('Liked!')">Like</button>
+                    <button onclick="alert('Shared!')">Share</button>
+                    <button onclick="alert('Commented!')">Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function addPost() {
+            const content = document.getElementById('postContent').value;
+            if (content.trim() === '') {
+                alert('Please enter some content for your post.');
+                return;
+            }
+
+            const postContainer = document.createElement('div');
+            postContainer.className = 'blog-post';
+
+            const postTitle = document.createElement('h2');
+            postTitle.textContent = 'New Post';
+
+            const postContent = document.createElement('p');
+            postContent.textContent = content;
+
+            const postAuthor = document.createElement('p');
+            postAuthor.className = 'author';
+            postAuthor.textContent = '- You';
+
+            const reactionButtons = document.createElement('div');
+            reactionButtons.className = 'reaction-buttons';
+
+            const likeButton = document.createElement('button');
+            likeButton.textContent = 'Like';
+            likeButton.onclick = () => alert('Liked!');
+
+            const shareButton = document.createElement('button');
+            shareButton.textContent = 'Share';
+            shareButton.onclick = () => alert('Shared!');
+
+            const commentButton = document.createElement('button');
+            commentButton.textContent = 'Comment';
+            commentButton.onclick = () => alert('Commented!');
+
+            reactionButtons.appendChild(likeButton);
+            reactionButtons.appendChild(shareButton);
+            reactionButtons.appendChild(commentButton);
+
+            postContainer.appendChild(postTitle);
+            postContainer.appendChild(postContent);
+            postContainer.appendChild(postAuthor);
+            postContainer.appendChild(reactionButtons);
+
+            const blogPosts = document.getElementById('blogPosts');
+            blogPosts.insertBefore(postContainer, blogPosts.firstChild);
+
+            document.getElementById('postContent').value = '';
+        }
+    </script>
+</body>
+</html>

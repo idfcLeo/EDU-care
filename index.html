@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Educare - Welcome</title>
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+      .logo {
+        position: fixed;
+        border-radius: 100%;
+        /* Pin it to the corner */
+        top: 10px;
+        left: 10px; /* Distance from the right */
+        width: 50px; /* Adjust size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: transform 0.3s ease; /* Smooth hover effect */
+      }
+      /* Hero Section Styles */
+      .hero-section {
+        text-align: center;
+        padding: 2rem;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        padding: 100px;
+      }
+
+      .educare {
+        color: white;
+        text-decoration: none;
+        position: absolute;
+        top: 15px;
+        left: 80px;
+        margin: 0;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .educare:hover {
+        color: #f2a154;
+      }
+
+      .hero-section h2 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        animation: fadeIn 2s ease-out;
+      }
+
+      .hero-section p {
+        font-size: 1.2em;
+        margin-bottom: 40px;
+        animation: fadeIn 3s ease-out;
+      }
+
+      .cta-button {
+        background-color: #f1c40f;
+        color: #333;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .cta-button:hover {
+        transform: scale(1.05);
+        background-color: #e67e22;
+      }
+
+      /* Feature Sections */
+      .feature-section {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+        padding: 20px;
+        animation: fadeIn 4s ease-out;
+      }
+
+      .feature {
+        text-align: center;
+        padding: 20px;
+        border: 2px solid #f1c40f;
+        border-radius: 10px;
+        width: 200px;
+        transition: transform 0.3s ease;
+      }
+
+      .feature:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+      }
+
+      .feature h3 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+      }
+
+      /* Testimonials Section */
+      .testimonials {
+        background-color: #f9f9f9;
+        padding: 50px 20px;
+        text-align: center;
+        animation: fadeIn 5s ease-out;
+      }
+
+      .testimonial {
+        font-style: italic;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+      }
+
+      .testimonial span {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      
+ /* General Section Styles */
+section.success-stories {
+  padding: 40px;
+  background-color: #f9f9f9;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.success-stories h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.success-stories p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Story Cards Container */
+.story-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual Story Card */
+.story-card {
+
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 2rem;
+  gap:50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: left;
+}
+
+.story-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.story-card h4 {
+  font-size: 1.2rem;
+  margin: 15px;
+  color: #444;
+}
+
+.story-card .story-preview {
+  font-size: 0.9rem;
+  margin: 15px;
+  color: #666;
+}
+
+.story-card .story-full {
+  font-size: 0.9rem;
+  margin: 15px;
+  color: #444;
+  display: none; /* Initially hidden */
+}
+
+.story-card .story-full.visible {
+  display: block;
+}
+
+.story-card .btn-secondary {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 15px;
+  padding: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.story-card:hover{
+  background-color:#D4EBF8;
+}
+
+.story-card:hover h4{
+  color:#0A3981;
+}
+/* Expanded Story Card */
+.story-card.expanded {
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #007bff;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.story-card.expanded img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.story-card.expanded .story-preview {
+  display: none; /* Hide preview when expanded */
+}
+
+.story-card.expanded .story-full {
+  display: block; /* Show full story when expanded */
+}
+.story-card img{
+  border-radius:8px;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .story-cards {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .story-card {
+    width: 100%;
+  }
+}
+
+/* Additional Stories Section */
+.additional-stories {
+  padding: 50px 20px;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+
+
+.additional-stories h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.story-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.story-image {
+  width: 400px;
+  height: 300px;
+  object-fit: fill;
+  border-radius: 10px;
+}
+
+.story-text {
+  max-width: 600px;
+  text-align: left;
+}
+
+.story-text h3 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.story-text p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+      /* Animations */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+        class="logo"
+        src="./Black Illustrated School Logo[1].png"
+        alt="logohain"
+      />
+      <h1><a href="index.html" class="educare">Educare</a></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="initiatives.html">Initiatives</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="getinvolved.html">Get Involved</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="comm.html">Community</a></li>
+        </ul>
+      </nav>
+      <!-- Login Dropdown Button -->
+      <div class="dropdown">
+
+        <button class="btn login-main-btn">Login</button>
+        <div class="dropdown-content">
+          <a href="login/student-login.html">Student Login</a>
+          <a href="login/teacher-login.html">Teacher Login</a>
+          <a href="login/parent-login.html">Parent Login</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h2>Welcome to Educare</h2>
+        <p>Your partner in building a brighter future for all.</p>
+        <a href="initiatives.html" class="cta-button">Explore Initiatives</a>
+      </section>
+
+      <!-- Feature Sections -->
+      <section class="feature-section">
+        <div class="feature">
+          <img src="images/education.png" alt="Education Icon" />
+          <h3>Educational Resources</h3>
+          <p>Find study materials, guides, and tools to help you succeed.</p>
+        </div>
+        <div class="feature">
+          <img src="images/community.png" alt="Community Icon" />
+          <h3>Get Involved</h3>
+          <p>Join us in making a difference in education.</p>
+        </div>
+        <div class="feature">
+          <img src="images/teacher.png" alt="Teacher Icon" />
+          <h3>Teacher Training</h3>
+          <p>Access training programs and resources for educators.</p>
+        </div>
+      </section>
+      <section class="success-stories">
+        <h2>Success Stories</h2>
+        <p>Check out some of the amazing stories of students and communities who have benefited from our initiatives.</p>
+        <div class="story-cards">
+          <div class="story-card" id="story1">
+            <h4>Shraddha Sharma</h4>
+            <img src="images/2.jpg" alt="Shraddha Sharma's Story" >
+            <p class="story-preview">Shraddha was born in Patna, Bihar...</p>
+            <p class="story-full hidden">
+              Shradha's early life in Patna was marked by both limitations and dreams. Despite coming from a lower-middle-class family, her parents emphasised the importance of education and ambition. In 1997, she moved to New Delhi to pursue her higher education at St. Stephen’s College, where she majored in History. Later, she went on to complete her Master’s in the same subject. However, her academic pursuits didn’t stop there. Shradha also studied design management and digital creative management (DCM) at the prestigious MICA in Ahmedabad.
+            </p>
+            <button class="btn-secondary" onclick="toggleStory('story1')">Read Story</button>
+          </div>
+          <div class="story-card" id="story2">
+            <h4>Kiran Mazumdar</h4>
+            <img src="images/1.jpg" alt="Kiran Mazumdar's Story">
+            <p class="story-preview">Kiran Mazumdar was born on 23 March 1953...</p>
+            <p class="story-full hidden">
+              She was educated at Bangalore's Bishop Cotton Girl's High School, graduating in 1968. She then attended Mount Carmel College, Bangalore, a women's college offering pre-university courses as an affiliate of Bangalore University. Her determination and innovative ideas later led her to become a pioneer in biotechnology.
+            </p>
+            <button class="btn-secondary" onclick="toggleStory('story2')">Read Story</button>
+          </div>
+          <div class="story-card" id="story3">
+            <h4>Ghazal Alagh</h4>
+            <img src="images/3.jpg" alt="Ghazal Alagh's Story">
+            <p class="story-preview">Ghazal Alagh has always been passionate...</p>
+            <p class="story-full hidden">
+              Her entrepreneurial journey is inspiring. She co-founded MamaEarth, a successful brand focused on creating safe and sustainable products for families. Her focus on innovation and sustainability has made her a notable figure in the business world.
+            </p>
+            <button class="btn-secondary" onclick="toggleStory('story3')">Read Story</button>
+          </div>
+        </div>
+      </section>
+      
+    <section class="additional-stories">
+      <h2>Not all Dropouts are successful,there are drawbacks also</h2>
+      <div class="story-container">
+        <img src="images/piechart.jpg" alt="Impact Image" class="story-image">
+        <div class="story-text">
+          <h3></h3>
+          <p>According to a story in the Atlantic, college dropouts over the age of 25 are 71 percent more likely to be unemployed, and are 4 times more likely to default on their student loans. On average, they earn 32 percent less than their contemporaries with college degrees.</p>
+        </div>
+      </div>
+    </section>
+  
+      <!-- Testimonials Section -->
+      <section class="testimonials">
+        <h2>What People Say About Us</h2>
+        <div class="testimonial">
+          "Educare has truly transformed my learning experience. I've gained
+          access to great study resources."
+          <span>Luffy,Student</span>
+        </div>
+        <div class="testimonial">
+          "The teacher training programs provided by Educare have helped me
+          become a better educator."
+          <span>Shere Habib, Teacher</span>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer>
+      <p>&copy; 2024 Educare. Empowering Education for All.</p>
+    </footer>
+    <script>
+      function toggleStory(storyId) {
+  const card = document.getElementById(storyId);
+  const preview = card.querySelector(".story-preview");
+  const fullStory = card.querySelector(".story-full");
+  const button = card.querySelector("button");
+
+  // Toggle visibility of the story
+  if (fullStory.classList.contains("hidden")) {
+    fullStory.classList.remove("hidden");
+    fullStory.classList.add("visible");
+    card.classList.add("expanded");
+    preview.style.display = "none";
+    button.innerText = "Close Story";
+  } else {
+    fullStory.classList.remove("visible");
+    fullStory.classList.add("hidden");
+    card.classList.remove("expanded");
+    preview.style.display = "block";
+    button.innerText = "Read Story";
+  }
+}
+
+
+    </script>
+    
+  </body>
+</html>

@@ -1,0 +1,26 @@
+.educare {
+  color:white;
+  text-decoration: none;
+  position: absolute;
+  top: 15px;
+  left: 80px;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+
+.logo {
+  position: fixed;
+  border-radius: 100%;
+  /* Pin it to the corner */
+  top: 10px;
+  left: 10px; /* Distance from the right */
+  width: 50px; /* Adjust size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.logo:hover{
+  transform: scale(1.05);
+}

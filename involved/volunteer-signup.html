@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Sign Up - Educational Portal</title>
+  <link rel="stylesheet" href="css/getinv.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .form-section {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 40px auto;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .input-group label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 5px;
+      transition: border-color 0.3s;
+    }
+
+    .input-group input:focus {
+      border-color: #27ae60;
+      outline: none;
+    }
+
+    .btn-primary {
+      background-color: #27ae60;
+      color: white;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      width: 100%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #2ecc71;
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+    /* Success message styles */
+    .success-message {
+      background-color: #2ecc71;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+
+    /* Error message styles */
+    .error-message {
+      background-color: #e74c3c;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Volunteer Sign Up</h1>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Sign Up to Volunteer</h2>
+      <p>Thank you for your interest in volunteering! Please fill out the form below to get started.</p>
+
+      <!-- Success and Error Messages -->
+      <div id="success-message" class="success-message">Thank you for signing up! We will contact you soon.</div>
+      <div id="error-message" class="error-message">There was an error with your submission. Please try again.</div>
+
+      <form id="volunteer-form" action="/submit-volunteer" method="post">
+        <div class="input-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="input-group">
+          <label for="availability">Availability</label>
+          <input type="text" id="availability" name="availability" placeholder="How often can you volunteer?" required>
+        </div>
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Educare. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Form validation and success/error handling
+    document.getElementById('volunteer-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission for demo
+
+      // Simple form validation
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const availability = document.getElementById('availability').value;
+
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      const phonePattern = /^[0-9]{10}$/;
+
+      let isValid = true;
+
+      // Validate email format
+      if (!emailPattern.test(email)) {
+        isValid = false;
+        document.getElementById('error-message').innerText = "Please enter a valid email address.";
+      }
+
+      // Validate phone number format
+      if (!phonePattern.test(phone)) {
+        isValid = false;
+        document.getElementById('error-message').innerText = "Please enter a valid 10-digit phone number.";
+      }
+
+      if (isValid) {
+        // Simulate successful form submission
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+
+        // Reset the form fields
+        document.getElementById('volunteer-form').reset();
+      } else {
+        // Simulate error
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('success-message').style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>

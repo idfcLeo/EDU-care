@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="./dashboard-styles.css" />
+    <link rel="stylesheet" href="student-dash.css">
+    <style>
+      body {
+        background: linear-gradient(to right, #00c9ff, #92fe9d);
+      }
+      .headi{
+        text-align: center;
+        margin-bottom: 4px;
+        font-size:3rem;
+      }
+      /* Dropdown Button Styling */
+      .dropdown-btn {
+        margin-top: 10px;
+        padding: 20px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+
+
+      }
+
+      .dropdown-btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Dropdown Menu Styling */
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background-color: white;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: max-content;
+        padding: 10px 0;
+        border-radius: 4px;
+      }
+
+      .dropdown.active .dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-item {
+        position: relative;
+        margin: 5px 0;
+      }
+
+      .subject-btn {
+        background: none;
+        border: none;
+        text-align: left;
+        padding: 10px 20px;
+        width: 100%;
+        cursor: pointer;
+      }
+      #access{
+        width: fit-content;
+      }
+      .subject-btn:hover {
+        background-color: #0056b3;
+        color: white;
+        border-radius: 5px;
+        font-weight: bolder;
+      }
+
+      /* Sub-dropdown Menu */
+      .sub-dropdown {
+        display: none;
+        margin-top: 5px;
+        padding-left: 20px;
+      }
+
+      .subject-btn.active + .sub-dropdown {
+        display: block;
+      }
+
+      .sub-dropdown button {
+        display: block;
+        width: 100%;
+        padding: 5px 20px;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .sub-dropdown button:hover {
+        background-color: #faf6e3;
+        color: #0056b3;
+        border-radius: 4px;
+        font-weight: bolder;
+      }
+
+      /* Option Card Styling */
+      .options-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .option-card {
+        position: relative;
+        width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        transition: transform 0.3s ease;
+      }
+
+      .option-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .option-card img {
+        max-width: 100px;
+        height: auto;
+        margin-bottom: 10px;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Student Dashboard</h1>
+    </header>
+    <h1 class="headi">Welcome,</h1>
+    <h1 class="headi" id="Hello"></h1>
+
+    <main>
+      <section class="dashboard-options">
+        
+        <p>Select an action to continue:</p>
+        <div class="options-container">
+          <div class="option-card">
+            <img src="images/grades.png" alt="Grades" />
+            <h3>View Grades</h3>
+            <div class="dropdown">
+              <button class="dropdown-btn">Select Grades</button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">
+                  <button onclick="location.href='gradephy.html'"  class="subject-btn">Physics Grades</button>
+                </div>
+                <div class="dropdown-item">
+                  <button class="subject-btn" onclick="location.href='gradechy.html'">Chemistry Grades</button>
+                </div>
+                <div class="dropdown-item">
+                  <button class="subject-btn"  onclick="location.href='grademat.html'">Mathematics Grades</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="access" class="option-card">
+            <img src="images/materials.png" alt="Materials" />
+            <h3>Access Study Materials</h3>
+            <div class="dropdown">
+              <button class="dropdown-btn">Select Materials</button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">
+                  <button
+                    class="subject-btn"
+                    id="physics"
+                    onclick="location.href='\lecturephysics.html'"
+                  >
+                    Physics Materials
+                  </button>
+                </div>
+                <div class="dropdown-item">
+                  <button
+                    class="subject-btn"
+                    onclick="location.href='\lecturechy.html'"
+                  >
+                    Chemistry Materials
+                  </button>
+                </div>
+                <div class="dropdown-item">
+                  <button
+                    onclick="location.href='\lecturemath.html'"
+                    class="subject-btn"
+                  >
+                    Mathematics Materials
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-card">
+            <img src="images/assignment.png" alt="Assignments" />
+            <h3>Submit Assignments</h3>
+            <div class="dropdown">
+              <button class="dropdown-btn">Select Assignments</button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">
+                  <button
+                    class="subject-btn"
+                    onclick="location.href='\assignment.html'"
+                  >
+                    Physics Assignments
+                  </button>
+                </div>
+                <div class="dropdown-item">
+                  <button
+                    class="subject-btn"
+                    onclick="location.href='\assignment.html'"
+                  >
+                    Chemistry Assignments
+                  </button>
+                </div>
+                <div class="dropdown-item">
+                  <button
+                    class="subject-btn"
+                    onclick="location.href='\assignment.html'"
+                  >
+                    Mathematics Assignments
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="psycoserver/psycomet.html" class="option-card">
+            <img src="images/test.svg" alt="Psychometric Test" />
+            <h3>Psychometric Test</h3>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Toggle the main dropdown menus
+      document.querySelectorAll(".dropdown-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          const dropdown = this.parentElement;
+          dropdown.classList.toggle("active");
+
+          // Close other open dropdowns
+          document.querySelectorAll(".dropdown").forEach((otherDropdown) => {
+            if (otherDropdown !== dropdown) {
+              otherDropdown.classList.remove("active");
+            }
+          });
+        });
+      });
+
+      // Toggle sub-dropdowns under each subject
+      document.querySelectorAll(".subject-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.classList.toggle("active");
+          const subDropdown = this.nextElementSibling;
+          subDropdown.style.display =
+            subDropdown.style.display === "block" ? "none" : "block";
+        });
+      });
+
+      // Close dropdowns when clicking outside
+      document.addEventListener("click", function (event) {
+        const dropdowns = document.querySelectorAll(".dropdown");
+        dropdowns.forEach((dropdown) => {
+          if (!dropdown.contains(event.target)) {
+            dropdown.classList.remove("active");
+          }
+        });
+      });
+
+      // Get the stored name from local storage
+      const name = localStorage.getItem("userName");
+      if (name) {
+        document.getElementById("Hello").textContent = ` ${name}!`;
+      } else {
+        document.getElementById("Hello").textContent = "Student!";
+      }
+    </script>
+    <script>
+            window.embeddedChatbotConfig = {
+        chatbotId: "-XpUhr2g11zxjjJyGtkKW",
+        domain: "www.chatbase.co",
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="-XpUhr2g11zxjjJyGtkKW"
+      domain="www.chatbase.co"
+      defer
+    ></script>
+  </body>
+</html>

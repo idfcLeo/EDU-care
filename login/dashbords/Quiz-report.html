@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Report</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      header {
+        background-color: #0056b3;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      main {
+        margin: 50px auto;
+        max-width: 900px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0056b3;
+      }
+
+      .form-section {
+        margin-bottom: 2rem;
+      }
+
+      .form-section label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-section select,
+      .form-section input {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        display: none;
+      }
+
+      .student-table th,
+      .student-table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+      }
+
+      .student-table th {
+        background-color: #0056b3;
+        color: white;
+      }
+
+      .student-table td input {
+        width: 50px;
+        text-align: center;
+      }
+
+      .chart-container {
+        margin-top: 2rem;
+        position: relative;
+        height: 300px;
+        width: 100%;
+      }
+
+      footer {
+        background-color: #0056b3;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Quiz Report</h1>
+    </header>
+
+    <main>
+      <h2>View Quiz Report</h2>
+
+      <!-- Batch, Class, Subject Selection -->
+      <div class="form-section">
+        <label for="batch">Select Batch:</label>
+        <select id="batch">
+          <option value="">-- Select Batch --</option>
+          <option value="batch1">Batch 1</option>
+          <option value="batch2">Batch 2</option>
+          <option value="batch3">Batch 3</option>
+        </select>
+      </div>
+
+      <div class="form-section">
+        <label for="class">Select Class:</label>
+        <select id="class">
+          <option value="">-- Select Class --</option>
+          <option value="class1">Class 1</option>
+          <option value="class2">Class 2</option>
+          <option value="class3">Class 3</option>
+        </select>
+      </div>
+
+      <div class="form-section">
+        <label for="subject">Select Subject:</label>
+        <select id="subject">
+          <option value="">-- Select Subject --</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="maths">Maths</option>
+        </select>
+      </div>
+
+      <!-- Student Name Selection -->
+      <div class="form-section">
+        <label for="student">Select Student:</label>
+        <select id="student">
+          <option value="">-- Select Student --</option>
+          <option value="john">John Doe</option>
+          <option value="jane">Jane Smith</option>
+          <option value="robert">Robert Brown</option>
+          <option value="lucy">Lucy Green</option>
+        </select>
+      </div>
+
+      <!-- Student Marks Table -->
+      <h3>Student Quiz Marks</h3>
+      <table class="student-table" id="marksTable">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Quiz 1</th>
+            <th>Quiz 2</th>
+            <th>Quiz 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Marks data will be filled dynamically -->
+        </tbody>
+      </table>
+
+      <!-- Performance Bar Graph -->
+      <div class="chart-container">
+        <canvas id="performanceChart"></canvas>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Educare. Empowering Teachers Everywhere.</p>
+    </footer>
+
+    <script>
+      const studentData = {
+        john: { name: "John Doe", quiz1: 75, quiz2: 80, quiz3: 90 },
+        jane: { name: "Jane Smith", quiz1: 85, quiz2: 88, quiz3: 95 },
+        robert: { name: "Robert Brown", quiz1: 60, quiz2: 70, quiz3: 65 },
+        lucy: { name: "Lucy Green", quiz1: 90, quiz2: 92, quiz3: 85 },
+      };
+
+      const studentDropdown = document.getElementById("student");
+      const marksTable = document.getElementById("marksTable");
+      const performanceChartCanvas = document.getElementById("performanceChart");
+      let performanceChart = null;
+
+      // Populate the marks table and display the chart when a student is selected
+      studentDropdown.addEventListener("change", function () {
+        const selectedStudent = studentDropdown.value;
+        const student = studentData[selectedStudent];
+
+        if (student) {
+          // Fill the table with marks data for the selected student
+          const tableBody = marksTable.querySelector("tbody");
+          tableBody.innerHTML = `
+            <tr>
+              <td>${student.name}</td>
+              <td><input type="number" value="${student.quiz1}" disabled /></td>
+              <td><input type="number" value="${student.quiz2}" disabled /></td>
+              <td><input type="number" value="${student.quiz3}" disabled /></td>
+            </tr>
+          `;
+
+          // Show the table
+          marksTable.style.display = "table";
+
+          // Update the chart
+          updateChart(student.name, student.quiz1, student.quiz2, student.quiz3);
+        } else {
+          marksTable.style.display = "none";
+        }
+      });
+
+      // Update the bar graph with selected student data
+      function updateChart(studentName, quiz1, quiz2, quiz3) {
+        // Destroy the previous chart instance if it exists
+        if (performanceChart) {
+          performanceChart.destroy();
+        }
+
+        const ctx = performanceChartCanvas.getContext("2d");
+
+        // Create a new chart with the updated data
+        performanceChart = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: ["Quiz 1", "Quiz 2", "Quiz 3"],
+            datasets: [
+              {
+                label: studentName,
+                data: [quiz1, quiz2, quiz3],
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

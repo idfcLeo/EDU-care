@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="yfechrep.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Reports</h1>
+        <button id="fetch-reports">Fetch Reports</button>
+        <div id="reports-container"></div>
+    </div>
+
+    <script>
+        document.getElementById('fetch-reports').addEventListener('click', fetchReports);
+
+        async function fetchReports() {
+            try {
+                const response = await fetch('http://localhost:3000/reports');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const reports = await response.json();
+                displayReports(reports);
+            } catch (error) {
+                console.error('Error fetching reports:', error);
+            }
+        }
+
+        function displayReports(reports) {
+            const reportsContainer = document.getElementById('reports-container');
+            reportsContainer.innerHTML = '';
+
+            reports.forEach(report => {
+                const reportElement = document.createElement('div');
+                reportElement.classList.add('report');
+                reportElement.innerHTML = `
+                    <h2>${report.name}</h2>
+                    <p><strong>Age:</strong> ${report.age}</p>
+                    <p><strong>Gender:</strong> ${report.gender}</p>
+                    <p><strong>Caste:</strong> ${report.caste}</p>
+                    <p><strong>Total Score:</strong> ${report.totalScore}</p>
+                    <p><strong>Risk Percentage:</strong> ${report.riskPercentage}%</p>
+                    <p><strong>Risk Level:</strong> ${report.riskLevel}</p>
+                    ${report.categoryScores ? `
+                    <h3>Category Scores</h3>
+                    <ul>
+                        ${report.categoryScores.map(score => `<li><strong>${score.category}:</strong> ${score.score}%</li>`).join('')}
+                    </ul>` : ''}
+                `;
+                reportsContainer.appendChild(reportElement);
+            });
+        }
+    </script>
+</body>
+</html>

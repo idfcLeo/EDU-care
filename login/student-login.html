@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Student Portal</title>
+  <link rel="stylesheet" href="student-login-styles.css">
+</head>
+<body>
+  <div class="login-page">
+    <!-- Image Section -->
+    <div class="image-section">
+      <img src="../images/student.jpg" alt="Student Portal">
+    </div>
+
+    <!-- Login Form Section -->
+    <div class="form-section">
+      <div class="login-container">
+        <h2>Welcome, Student!</h2>
+        <p>Please log in to access your dashboard.</p>
+        <form action="dashbords/student-dashboard.html">
+          <div class="input-group">
+            <label for="name">Name</label>
+            <input type="name" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" onclick="login()" class="btn-primary">Login</button>
+        </form>
+        <div class="signup-link">
+          <p>New to the portal? <a href="#">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function login() {
+  const name = document.getElementById('name').value;
+  if (name.trim() === "") {
+      alert("Please enter your name.");
+      return;
+  }
+  // Store name in local storage to pass it to the next page
+  localStorage.setItem("userName", name);
+  // Redirect to next page
+  window.location.href = "website/login/dashbords/student-dashboard.html";
+}
+
+  </script>
+</body>
+</html>

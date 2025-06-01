@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources - Educational Portal</title>
+    <link rel="stylesheet" href="css/getinv.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+      .logo {
+        position: fixed;
+        border-radius: 100%;
+        /* Pin it to the corner */
+        top: 10px;
+        left: 10px; /* Distance from the right */
+        width: 50px; /* Adjust size */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: transform 0.3s ease; /* Smooth hover effect */
+      }
+
+      .active {
+        display: block;
+        background-color: #f2a154;
+        padding: 2px 5px 2px 5px;
+        border-radius: 5px;
+      }
+      .active a:hover {
+        display: block;
+        background-color: #f2a154;
+        color: #424874;
+      }
+
+
+      nav ul {
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        gap: 60px;
+      }
+
+      nav ul li {
+        margin: 0 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+      }
+
+      main {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .resources-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .resource-card {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        width: 300px;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .resource-card h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+
+      .resource-card p {
+        font-size: 14px;
+        color: #7f8c8d;
+      }
+
+      .expand-btn {
+        background-color: #27ae60;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .expand-btn:hover {
+        background-color: #2ecc71;
+      }
+
+      .expanded-content {
+        display: none;
+        margin-top: 10px;
+        background-color: #ecf0f1;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      footer {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img
+      class="logo"
+      src="./Black Illustrated School Logo[1].png"
+      alt="logohain"
+    />
+      <h1 class="educare"><a href="index.html">Educare</a></h1>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="initiatives.html">Initiatives</a></li>
+          <li class="active"><a href="resources.html">Resources</a></li>
+          <li><a href="getinvolved.html">Get Involved</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Explore Our Educational Resources</h2>
+
+      <div class="resources-section">
+        <!-- Resource 1 -->
+        <div class="resource-card">
+          <h3>Study Guides</h3>
+          <p>Access study guides for various subjects and grades.</p>
+          <button class="expand-btn" onclick="toggleContent('study-guides')">
+            View More
+          </button>
+          <div id="study-guides" class="expanded-content">
+            <p>
+              Our study guides are designed to help students succeed in exams.
+              They cover subjects from math to science, including practice
+              questions, tips, and sample problems.
+            </p>
+          </div>
+        </div>
+
+        <!-- Resource 2 -->
+        <div class="resource-card">
+          <h3>Online Courses</h3>
+          <p>Explore free and paid online courses for skill development.</p>
+          <button class="expand-btn" onclick="toggleContent('online-courses')">
+            View More
+          </button>
+          <div id="online-courses" class="expanded-content">
+            <p>
+              We offer a wide range of online courses that you can take at your
+              own pace. From programming to design, these courses help you build
+              your skills for a better future.
+            </p>
+          </div>
+        </div>
+
+        <!-- Resource 3 -->
+        <div class="resource-card">
+          <h3>Scholarships</h3>
+          <p>Find scholarships available for students across various fields.</p>
+          <a href="scholarships.html" class="expand-btn">View More</a>
+        
+          </button>
+          <div id="scholarships" class="expanded-content">
+            <p>
+              We provide a list of available scholarships for both undergraduate
+              and graduate students. Check out the eligibility criteria and
+              apply before the deadlines.
+            </p>
+          </div>
+        </div>
+
+        <!-- Resource 4 -->
+        <div class="resource-card">
+          <h3>Educational Tools</h3>
+          <p>
+            Find tools to aid your learning process, including calculators and
+            planners.
+          </p>
+          <button
+            class="expand-btn"
+            onclick="toggleContent('educational-tools')"
+          >
+            View More
+          </button>
+          <div id="educational-tools" class="expanded-content">
+            <p>
+              We provide a variety of online tools such as scientific
+              calculators, essay templates, and lesson planners to help
+              streamline your study sessions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Educare. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function toggleContent(resourceId) {
+        const content = document.getElementById(resourceId);
+        if (content.style.display === "none" || content.style.display === "") {
+          content.style.display = "block";
+        } else {
+          content.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>

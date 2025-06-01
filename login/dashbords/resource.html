@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="dashboard-styles.css">
+  <link rel="stylesheet" href="teach-dash.css" />
+  <title>Document</title>
+  <style>
+    .options-container{
+      margin-top: 100px;
+      gap: 100px;
+    }
+    .option-card{
+      font-size: 1.5rem;
+      gap: 25px;
+      height: 200px;
+      width: 300px; /* Increased size */
+      padding: 25px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .option-card:hover{
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    footer{
+      margin-top: 100px;
+      padding: 15px 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Teacher Dashboard</h1>
+  </header>
+
+  <div class="options-container">
+
+    <a href="./teachas.html" class="option-card">
+      <img src="images/attendance.png" alt="Assignments">
+      <h3>Upload Assignments</h3>
+    </a>
+
+    <a href="./teachas2.html" class="option-card">
+      <img src="images/attendance.png" alt="Attendance">
+      <h3>Upload Quizzes</h3>
+    </a>
+
+    <a href="./uploadmarks.html" class="option-card">
+      <img src="images/assignment.png" alt="Marks">
+      <h3>Upload Marks</h3>
+        
+    </a>
+    <a href="./upload-study-material.html" class="option-card">
+      <img src="images/assignment.png" alt="Marks">
+      <h3>Upload Study Materials</h3>
+        
+    </a>
+  </div>
+  
+  <footer>
+    <p>&copy; 2024 Educare. Empowering Teachers Everywhere.</p>
+  </footer>
+</body>
+</html>

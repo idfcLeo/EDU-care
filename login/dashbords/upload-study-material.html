@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Study Material</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link rel="stylesheet" href="teach-dash.css" />
+    <style>
+      /* General Styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      header {
+        background-color: #0056b3;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      main {
+        margin: 50px auto;
+        max-width: 600px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0056b3;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input, select, textarea, button {
+        font-size: 1rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+      }
+
+      button {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #004494;
+      }
+
+      .success-message {
+        margin-top: 1rem;
+        color: green;
+        text-align: center;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Upload Study Material</h1>
+    </header>
+
+    <main>
+      <h2>Study Material Upload Form</h2>
+      <form id="studyMaterialForm">
+        <label for="batch">Select Batch:</label>
+        <select id="batch" required>
+          <option value="">-- Select Batch --</option>
+          <option value="batch1">Batch 1</option>
+          <option value="batch2">Batch 2</option>
+          <option value="batch3">Batch 3</option>
+        </select>
+
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" placeholder="Enter class" required />
+
+        <label for="subject">Select Subject:</label>
+        <select id="subject" required>
+          <option value="">-- Select Subject --</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="maths">Maths</option>
+        </select>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" rows="4" placeholder="Brief description of the material" required></textarea>
+
+        <label for="fileUpload">Upload File:</label>
+        <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.doc,.docx,.txt" required />
+
+        <button type="submit">Upload Material</button>
+      </form>
+
+      <p id="successMessage" class="success-message">Your study material has been uploaded successfully!</p>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Educare. Empowering Teachers Everywhere.</p>
+    </footer>
+
+    <script>
+      // Handle form submission
+      const studyMaterialForm = document.getElementById("studyMaterialForm");
+      const successMessage = document.getElementById("successMessage");
+
+      studyMaterialForm.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent actual form submission
+        successMessage.style.display = "block"; // Show success message
+        studyMaterialForm.reset(); // Reset the form fields
+      });
+    </script>
+  </body>
+</html>

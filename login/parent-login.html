@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Educational Portal</title>
+  <link rel="stylesheet" href="login-styles.css">
+</head>
+<body>
+  <div class="login-page">
+    <!-- Image Section -->
+    <div class="image-section">
+      <img src="../images/parent.jpg" alt="Educational Portal">
+    </div>
+
+    <!-- Login Form Section -->
+    <div class="form-section">
+      <div class="login-container">
+        <h2>Welcome Back!</h2>
+        <p>Please log in to continue.</p>
+        <form action="dashbords/parent-dashboard.html">
+          <div class="input-group">
+            <label for="name">Email</label>
+            <input type="name" id="name" name="name" placeholder="Enter your Name" required>
+          </div>
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <button type="submit" class="btn-primary">Login</button>
+        </form>
+        <div class="signup-link">
+          <p>Don't have an account? <a href="#">Sign Up</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

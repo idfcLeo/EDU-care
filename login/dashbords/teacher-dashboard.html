@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="dashboard-styles.css" />
+    <link rel="stylesheet" href="teach-dash.css" />
+    
+    <style>
+      
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Teacher Dashboard</h1>
+    </header>
+    <h2 class="headi">Welcome</h2>
+    <h2 class="headi"></h2>
+    <main>
+      <section class="dashboard-options">
+        
+        <p>Select an action to continue:</p>
+        <div class="options-container">
+          <a href="./manage-attendance.html" class="option-card">
+            <img src="images/attendance.png" alt="Attendance" />
+            <h3>Manage Attendance</h3>
+          </a>
+          <a href="./resource.html" class="option-card">
+            <img src="images/attendance.png" alt="Attendance" />
+            <h3>Manage Resources</h3>
+          </a>
+          <a href="./reports.html" class="option-card">
+            <img src="images/assignment.png" alt="Assignments" />
+            <h3>Student Reports</h3>
+          </a>
+          <a href="./teacher-training.html" class="option-card">
+            <img src="images/resource.png" alt="Resources" />
+            <h3>Teacher Training</h3>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Educare. Empowering Teachers Everywhere.</p>
+    </footer>
+
+    <script>
+      const name = localStorage.getItem("userName");
+      if (name) {
+        document.getElementById("Hello").textContent = ` ${name}!`;
+      } else {
+        document.getElementById("Hello").textContent = "Student!";
+      }
+    </script>
+  </body>
+</html>

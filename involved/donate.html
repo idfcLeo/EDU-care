@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Now - Educational Portal</title>
+  <link rel="stylesheet" href="css/getinv.css">
+  <style>
+    /* Add custom styles for better interactivity */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    header nav ul li {
+      display: inline;
+      margin: 0 15px;
+    }
+    header nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .donate-section {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .donate-section h2 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .donation-options {
+      margin-top: 20px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group label {
+      font-weight: bold;
+      display: block;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .input-group select {
+      cursor: pointer;
+    }
+    .btn-primary {
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background-color: #2ecc71;
+    }
+    .donation-progress {
+      margin-top: 30px;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      height: 20px;
+    }
+    .progress {
+      height: 100%;
+      background-color: #27ae60;
+      border-radius: 5px;
+    }
+    .recurring-donation {
+      margin-top: 20px;
+    }
+    .recurring-donation input[type="checkbox"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Donate Now</h1>
+    
+  </header>
+
+  <main>
+    <section class="donate-section">
+      <h2>Your Generosity Helps Us Make a Difference!</h2>
+      <p>Your donation supports scholarships, resources, and initiatives that empower students and communities. Thank you for making an impact!</p>
+
+      <!-- Donation Options -->
+      <div class="donation-options">
+        <h3>Select Your Donation Amount</h3>
+        <form action="/submit-donation" method="post">
+          <!-- Donation Amount with predefined options -->
+          <div class="input-group">
+            <label for="donation-amount">Choose an amount</label>
+            <select id="donation-amount" name="donation-amount" required>
+              <option value="50">$50</option>
+              <option value="100">$100</option>
+              <option value="200">$200</option>
+              <option value="500">$500</option>
+              <option value="custom">Custom Amount</option>
+            </select>
+          </div>
+
+          <!-- Custom Amount Input (visible if user selects "Custom Amount") -->
+          <div class="input-group" id="custom-amount-group" style="display: none;">
+            <label for="custom-amount">Enter Custom Amount</label>
+            <input type="number" id="custom-amount" name="custom-amount" placeholder="Enter custom amount" min="1">
+          </div>
+
+          <!-- Donation Method -->
+          <div class="input-group">
+            <label for="donation-method">Donation Method</label>
+            <select id="donation-method" name="donation-method" required>
+              <option value="credit-card">Credit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="bank-transfer">Bank Transfer</option>
+            </select>
+          </div>
+
+          <!-- Recurring Donation Option -->
+          <div class="recurring-donation">
+            <input type="checkbox" id="recurring-donation" name="recurring" value="true">
+            <label for="recurring-donation">Make this a recurring donation</label>
+          </div>
+
+          <button type="submit" class="btn-primary">Donate Now</button>
+        </form>
+      </div>
+
+      <!-- Donation Progress Bar -->
+      <div class="donation-progress">
+        <h3>Our Donation Goal</h3>
+        <div class="progress-bar">
+          <div class="progress" style="width: 60%;"></div> <!-- Change width based on donation goal progress -->
+        </div>
+        <p><strong>Goal: $5000</strong> | Raised: $3000</p>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Educare. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript to toggle custom amount input
+    document.getElementById('donation-amount').addEventListener('change', function() {
+      const customAmountGroup = document.getElementById('custom-amount-group');
+      if (this.value === 'custom') {
+        customAmountGroup.style.display = 'block';
+      } else {
+        customAmountGroup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

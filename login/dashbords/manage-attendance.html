@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Attendance</title>
+    <link rel="stylesheet" href="dashboard-styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+        color: #333;
+      }
+
+      header {
+        background-color: #0056b3;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      header h1 {
+        margin: 0;
+      }
+
+      main {
+        margin: 50px auto;
+        max-width: 800px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0056b3;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      label {
+        font-weight: bold;
+      }
+
+      input,
+      select,
+      button {
+        font-size: 1rem;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #0056b3;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #004494;
+      }
+
+      .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+      }
+
+      .attendance-table th,
+      .attendance-table td {
+        border: 1px solid #ccc;
+        padding: 0.5rem;
+        text-align: center;
+      }
+
+      #attendanceChart {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Manage Attendance</h1>
+    </header>
+
+    <main>
+      <h2>Attendance Form</h2>
+      <form id="attendanceForm">
+        <label for="batch">Select Batch:</label>
+        <select id="batch" required>
+          <option value="">-- Select Batch --</option>
+          <option value="batch1">Batch 1</option>
+          <option value="batch2">Batch 2</option>
+          <option value="batch3">Batch 3</option>
+        </select>
+
+        <label for="class">Class:</label>
+        <input type="text" id="class" name="class" placeholder="Enter class" required />
+
+        <label for="subject">Select Subject:</label>
+        <select id="subject" required>
+          <option value="">-- Select Subject --</option>
+          <option value="physics">Physics</option>
+          <option value="chemistry">Chemistry</option>
+          <option value="maths">Maths</option>
+        </select>
+
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" required />
+
+        <button type="submit">Upload Attendance</button>
+      </form>
+
+      <div id="attendanceTableContainer" style="display: none;">
+        <h3>Attendance Table</h3>
+        <table class="attendance-table" id="attendanceTable">
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example Student Rows -->
+            <tr>
+              <td>John Doe</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Robert Brown</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Alice Johnson</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Tom White</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Emily Davis</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>David Lee</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Linda Martinez</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>James Wilson</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Maria Garcia</td>
+              <td>
+                <select>
+                  <option value="present">Present</option>
+                  <option value="absent">Absent</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button id="saveAttendance">Save Attendance</button>
+      </div>
+
+      <div id="attendanceChartContainer" style="display: none;">
+        <h3>Attendance Chart</h3>
+        <canvas id="attendanceChart"></canvas>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Educare. Empowering Teachers Everywhere.</p>
+    </footer>
+
+    <script>
+      const attendanceForm = document.getElementById("attendanceForm");
+      const attendanceTableContainer = document.getElementById("attendanceTableContainer");
+      const attendanceChartContainer = document.getElementById("attendanceChartContainer");
+      const saveAttendanceButton = document.getElementById("saveAttendance");
+      const attendanceChartCanvas = document.getElementById("attendanceChart");
+
+      attendanceForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        // Show attendance table after form submission
+        attendanceTableContainer.style.display = "block";
+        attendanceChartContainer.style.display = "block";
+      });
+
+      saveAttendanceButton.addEventListener("click", function () {
+        // Collect attendance data
+        let presentCount = 0;
+        let absentCount = 0;
+
+        const attendanceRows = document.querySelectorAll(".attendance-table tbody tr");
+        attendanceRows.forEach(row => {
+          const status = row.querySelector("select").value;
+          if (status === "present") presentCount++;
+          else absentCount++;
+        });
+
+        // Display pie chart with attendance data
+        const ctx = attendanceChartCanvas.getContext("2d");
+        const attendanceChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: ["Present", "Absent"],
+            datasets: [{
+              data: [presentCount, absentCount],
+              backgroundColor: ["#4caf50", "#f44336"],
+            }],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: "top",
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (tooltipItem) {
+                    return tooltipItem.label + ": " + tooltipItem.raw;
+                  },
+                },
+              },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
